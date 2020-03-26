@@ -3,7 +3,93 @@ body {
     margin: 0;
     padding: 0;
     background-color: black;
-}
-#welcome {
     color: white;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    font-family: Script MT, Helvetica, sans-serif;
+    border-radius: 3px;
+    background-color: inherit;
+    color: inherit;
+    border: 3px white double;
+    font-size: xx-large;
+}
+
+button:hover {
+    color: rgb(150, 10, 10);
+}
+
+/* Home */
+
+.welcome {
+    text-align: center;
+    font-size: 40px;
+}
+
+.ble {
+    font-size: 60px;
+}
+
+.quiz {
+    font-size: 50px;
+}
+
+#homePic {
+    margin-bottom: 26.8px;
+    max-width: 75vw;
+}
+
+@media all and (max-width: 554px) {
+    .welcome {
+        text-align: center;
+        font-size: 40px;
+    }
+    
+    .ble {
+        font-size: 50px;
+    }
+    
+    .quiz {
+        font-size: 35px;
+    }
+}
+
+/* Questions */
+
+fieldset {
+    font-size: 40px;
+    border: 3px white solid;
+    margin: 10px 150px 0 150px;
+}
+.question {
+    margin-left: 300px;
+}
+.rep {
+    text-align: center;
+}
+.touchRep:hover {
+    color: rgb(150, 10, 10);
+}
+.next {
+    font-fam MT, Arial, Helvetica, sans-serif;
+    background-color: black;
+    border: 3px white double;
+    display: block;
+    margin-right: 50px;
+    margin-bottom: 20px;
+    font-size: x-large;
+}
+
+.next:hover {
+    color: rgb(150, 10, 10);
+}
+
+.bcgPB {
+    background: black url("../Logo/logofond.png") fixed no-repeat center; 
 }
