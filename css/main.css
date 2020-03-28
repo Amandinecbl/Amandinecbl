@@ -4,6 +4,7 @@ body {
     padding: 0;
     background-color: black;
     color: white;
+    vertical-align: middle;
 }
 
 main {
@@ -19,10 +20,18 @@ button {
     color: inherit;
     border: 3px white double;
     font-size: xx-large;
+    margin-top: 26.8px;
 }
 
 button:hover {
     color: rgb(150, 10, 10);
+}
+
+fieldset {
+    font-size: 40px;
+    border: 3px white solid;
+    margin-right: 150px;
+    margin-left: 150px;
 }
 
 /* Home */
@@ -40,11 +49,6 @@ button:hover {
     font-size: 50px;
 }
 
-#homePic {
-    margin-bottom: 26.8px;
-    max-width: 75vw;
-}
-
 @media all and (max-width: 554px) {
     .welcome {
         text-align: center;
@@ -60,13 +64,36 @@ button:hover {
     }
 }
 
+#superposition {
+    display: flex;
+    position: relative;
+    align-items: center;
+    vertical-align: middle;
+    
+}
+
+#homePic1 {
+    z-index: 2;
+    margin: auto;
+}
+
+#homePic1:hover {
+    opacity: 0;
+}
+
+#homePic2 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    
+
+}
+
 /* Questions */
 
-fieldset {
-    font-size: 40px;
-    border: 3px white solid;
-    margin: 10px 150px 0 150px;
-}
 .question {
     margin-left: 300px;
 }
@@ -92,4 +119,19 @@ fieldset {
 
 .bcgPB {
     background: black url("../Logo/logofond.png") fixed no-repeat center; 
+}
+
+/* Fin */
+
+.centre {
+    text-align: center;
+}
+
+#seeyou {
+    display: flex;
+    margin: auto;
+}
+
+#date {
+    font-size: 60px;
 }
