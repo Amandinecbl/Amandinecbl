@@ -8,9 +8,18 @@ body {
 }
 
 main {
+    overflow-x: hidden;
+    display: flex;
+}
+
+#home {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+article, #home  {
+    min-width: 100vw;
 }
 
 button {
@@ -64,22 +73,24 @@ fieldset {
     }
 }
 
-#superposition {
+.superposition {
     display: flex;
-    position: relative;
-    align-items: center;
-    vertical-align: middle;
-    
+    position: relative; 
 }
 
-#homePic1 {
+#pic1 {
     z-index: 2;
     margin: auto;
 }
 
-#homePic1:hover {
-    opacity: 0;
+#transition {
+    transition: opacity, 1s ease-in 1ms;
+    cursor: pointer;
 }
+
+#transition:hover {
+     opacity: 0;
+ }
 
 #homePic2 {
     position: absolute;
@@ -95,7 +106,7 @@ fieldset {
 /* Questions */
 
 .question {
-    margin-left: 300px;
+    margin-left: 20px;
 }
 .rep {
     text-align: center;
@@ -103,17 +114,16 @@ fieldset {
 .touchRep:hover {
     color: rgb(150, 10, 10);
 }
-.next {
-    font-fam MT, Arial, Helvetica, sans-serif;
+.toNextForm {
+    font-family: Script MT, Arial, Helvetica, sans-serif;
     background-color: black;
     border: 3px white double;
-    display: block;
-    margin-right: 50px;
-    margin-bottom: 20px;
+    display: flex;
+    margin: 26.8px auto 0 auto;
     font-size: x-large;
 }
 
-.next:hover {
+.toNextForm:hover {
     color: rgb(150, 10, 10);
 }
 
@@ -134,4 +144,29 @@ fieldset {
 
 #date {
     font-size: 60px;
+}
+
+
+
+.gifBack {
+    position: absolute;
+    width: 150px;
+    height: 75px;
+    z-index: 1;
+    opacity: 0;
+}
+
+.gifBack:hover {
+    opacity: 1;
+}
+
+.transitionGif {
+    transition: opacity, width, height, 1s linear 1ms;
+    cursor: pointer;
+}
+
+.transitionGif:hover {
+    opacity: 1;
+    width: 300px;
+    height: 150px;
 }
