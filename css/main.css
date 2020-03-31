@@ -4,21 +4,14 @@ body {
     padding: 0;
     background-color: black;
     color: white;
-    vertical-align: middle;
+    overflow-x: hidden;
 }
 
 main {
-    overflow-x: hidden;
     display: flex;
 }
 
-#home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-article, #home  {
+article {
     min-width: 100vw;
 }
 
@@ -29,7 +22,8 @@ button {
     color: inherit;
     border: 3px white double;
     font-size: xx-large;
-    margin-top: 26.8px;
+    position: relative;
+    left: inherit;
 }
 
 button:hover {
@@ -39,23 +33,25 @@ button:hover {
 fieldset {
     font-size: 40px;
     border: 3px white solid;
-    margin-right: 150px;
-    margin-left: 150px;
+    margin-right: 10%;
+    margin-left: 10%;
 }
 
 /* Home */
 
 .welcome {
     text-align: center;
-    font-size: 40px;
+    font-size: 30px;
+    position: relative;
+    margin : 0 auto 0 auto;
 }
 
 .ble {
-    font-size: 60px;
+    font-size: 50px;
 }
 
 .quiz {
-    font-size: 50px;
+    font-size: 40px;
 }
 
 @media all and (max-width: 554px) {
@@ -73,34 +69,29 @@ fieldset {
     }
 }
 
-.superposition {
+#empiler {
     display: flex;
-    position: relative; 
+    position: relative;
+    justify-content: center;
+    background: url(../Logo/LogoBLneg.png) no-repeat fixed center;
+    height: 400px;
+    margin-bottom: 20px;
 }
-
-#pic1 {
+#pic1{
+    position: absolute;
     z-index: 2;
-    margin: auto;
-}
-
-#transition {
     transition: opacity, 1s ease-in 1ms;
     cursor: pointer;
 }
 
-#transition:hover {
-     opacity: 0;
- }
+#pic1:hover {
+    opacity: 0;
+}
 
-#homePic2 {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
-    
-
+#home {
+    min-width: 100vw;
+    text-align: center;
+    margin-top: 26.8px;
 }
 
 /* Questions */
@@ -109,7 +100,7 @@ fieldset {
     margin-left: 20px;
 }
 .rep {
-    text-align: center;
+    margin-left: 500px;
 }
 .touchRep:hover {
     color: rgb(150, 10, 10);
@@ -127,7 +118,7 @@ fieldset {
     color: rgb(150, 10, 10);
 }
 
-.bcgPB {
+.bcgPB, #toEnd {
     background: black url("../Logo/logofond.png") fixed no-repeat center; 
 }
 
