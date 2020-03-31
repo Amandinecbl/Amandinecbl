@@ -3,6 +3,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: black;
+    box-sizing: border-box;
     color: white;
     overflow-x: hidden;
 }
@@ -13,6 +14,9 @@ main {
 
 article {
     min-width: 100vw;
+    /* overflow-y: hidden; */
+    height: 100vh;
+    display: flex;
 }
 
 button {
@@ -31,10 +35,9 @@ button:hover {
 }
 
 fieldset {
-    font-size: 40px;
+    font-size: 20px;
     border: 3px white solid;
-    margin-right: 10%;
-    margin-left: 10%;
+    margin: 5%;
 }
 
 /* Home */
@@ -69,22 +72,28 @@ fieldset {
     }
 }
 
-#empiler {
-    display: flex;
+#imageContainer {
     position: relative;
-    justify-content: center;
-    background: url(../Logo/LogoBLneg.png) no-repeat fixed center;
-    height: 400px;
-    margin-bottom: 20px;
+    margin: 60px 0;
 }
 #pic1{
+    /* position: absolute; */
+}
+
+#pic1, #pic2 {
+    height: 300px;
+}
+
+#pic2{
     position: absolute;
     z-index: 2;
     transition: opacity, 1s ease-in 1ms;
     cursor: pointer;
+    right: 50%;
+    transform: translateX(50%);
 }
 
-#pic1:hover {
+#pic2:hover {
     opacity: 0;
 }
 
@@ -97,10 +106,10 @@ fieldset {
 /* Questions */
 
 .question {
-    margin-left: 20px;
+    font-size: 30px;
 }
 .rep {
-    margin-left: 500px;
+    /* margin-left: 500px; */
 }
 .touchRep:hover {
     color: rgb(150, 10, 10);
@@ -118,6 +127,9 @@ fieldset {
     color: rgb(150, 10, 10);
 }
 
+.bcgPB {
+
+}
 .bcgPB, #toEnd {
     background: black url("../Logo/logofond.png") fixed no-repeat center; 
 }

@@ -27,41 +27,41 @@ const questions = [
         typeRep : 'taux',
         reponses : ['2g/l','4g/l','Les gars vous dormez …','Mais vous buvez pas vous bande de mytho']
     },
-    {
-        numeroQuestion : 'Question 4',
-        intro : 'L\'année prochaine, la présidence des associations se relève comme chaque année. Comme nous sommes très investis pour notre école, certains d\'entre nous assurerons cette relève.',
-        title : 'Mais combien ?',
-        typeRep : 'nombre',
-        reponses : ['2','6','7','8']
-    },
-    {
-        numeroQuestion : 'Question 5',
-        intro : 'L\'école c\'est sympa, mais on n\'y passe pas toute notre vie non plus.',
-        title : 'D\'après toi, quel est notre endroit favoris ?',
-        typeRep : 'nom',
-        reponses : ['Le bar','Le port en été, le lit en hiver','JB','Avec la mif']
-    },
-    {
-        numeroQuestion : 'Question 6',
-        intro : 'Après cette période de confinement interminable ...',
-        title : 'EST-CE QUE VOUS T\'ES CHAUD POUR UNE BONNE SOIREE ?',
-        typeRep : 'oui',
-        reponses : ['Oui !','Non','Ca dépend','OH QUE OUI !']
-    },
-    {
-        numeroQuestion : 'Question 7',
-        intro : 'Cette année fût haute en couleur grâce à notre cher BDVice.',
-        title : 'Lequel des évènements de cette année t\'a le plus marqué(e) ?',
-        typeRep : 'what',
-        reponses : ['', '', '', ''],
-    },
-    {
-        numeroQuestion : 'Question 8',
-        intro : 'Oui, on sait, on rigole bien par ici. Mais trêve de plaisanterie.',
-        title : 'Tu penses qu\'on vous réserve quoi de beau pour l\'année prochaine ?',
-        typeRep : 'nom',
-        reponses : ['Plein de soirées de ouf','Des activités comme on n\'en a jamais eu l\'année passée','De supers moments tous ensemble','Les 3 bien sûr !!']
-    },
+    // {
+    //     numeroQuestion : 'Question 4',
+    //     intro : 'L\'année prochaine, la présidence des associations se relève comme chaque année. Comme nous sommes très investis pour notre école, certains d\'entre nous assurerons cette relève.',
+    //     title : 'Mais combien ?',
+    //     typeRep : 'nombre',
+    //     reponses : ['2','6','7','8']
+    // },
+    // {
+    //     numeroQuestion : 'Question 5',
+    //     intro : 'L\'école c\'est sympa, mais on n\'y passe pas toute notre vie non plus.',
+    //     title : 'D\'après toi, quel est notre endroit favoris ?',
+    //     typeRep : 'nom',
+    //     reponses : ['Le bar','Le port en été, le lit en hiver','JB','Avec la mif']
+    // },
+    // {
+    //     numeroQuestion : 'Question 6',
+    //     intro : 'Après cette période de confinement interminable ...',
+    //     title : 'EST-CE QUE VOUS T\'ES CHAUD POUR UNE BONNE SOIREE ?',
+    //     typeRep : 'oui',
+    //     reponses : ['Oui !','Non','Ca dépend','OH QUE OUI !']
+    // },
+    // {
+    //     numeroQuestion : 'Question 7',
+    //     intro : 'Cette année fût haute en couleur grâce à notre cher BDVice.',
+    //     title : 'Lequel des évènements de cette année t\'a le plus marqué(e) ?',
+    //     typeRep : 'what',
+    //     reponses : ['', '', '', ''],
+    // },
+    // {
+    //     numeroQuestion : 'Question 8',
+    //     intro : 'Oui, on sait, on rigole bien par ici. Mais trêve de plaisanterie.',
+    //     title : 'Tu penses qu\'on vous réserve quoi de beau pour l\'année prochaine ?',
+    //     typeRep : 'nom',
+    //     reponses : ['Plein de soirées de ouf','Des activités comme on n\'en a jamais eu l\'année passée','De supers moments tous ensemble','Les 3 bien sûr !!']
+    // },
     
 ]
 
@@ -70,8 +70,8 @@ questions.forEach( question => {
     <fieldset>
         <legend>${ question.numeroQuestion }</legend>
         <p class="question">${ question.intro }</p>
-            <p class="question">${ question.title }<br/>
-            <form class="rep" method="post" action="traitement.php">
+        <p class="question">${ question.title }<br/>
+        <form class="rep" method="post" action="traitement.php">
     `
 
     question.reponses.forEach(response => {
@@ -81,36 +81,36 @@ questions.forEach( question => {
     });
 
     articleHTML += `
-    </form>
+        </form>
         <div class="superposition">
             <img class="gifBack transitionGif" src="./gif/youfoundme.gif" alt="You found me!"/>
         </div>
         <button class="toNextForm">Question suivante</button>
-        </fieldset>
+    </fieldset>
     `
-    
 
     const article = document.createElement('article')
 
     article.className = 'bcgPB'
     article.innerHTML = articleHTML
 
-    document.querySelector('main').append(article)
+    document.querySelector('main').appendChild(article)
 })
-
-
-
-
 
 document.querySelector('#next').addEventListener('click', () => {
-    document.querySelector('.toNextForm').scrollIntoView({ behavior: 'smooth', block: 'center' })
+    document.querySelectorAll('.bcgPB')[0].scrollIntoView({ behavior: 'smooth', block: 'end' })
 })
 
-document.querySelectorAll('.toNextForm').forEach ((toNextForm, i, p) => {
-    toNextForm.addEventListener('click', () => {
-        console.log(toEnd)
+
+
+document.querySelectorAll('.bcgPB').forEach ((toNextForm, i, p) => {
+    toNextForm.querySelector('.toNextForm').addEventListener('click', () => {
+        console.log(p)
+        console.log(i)
         if (!p[i++])
-            return 
-        p[i++].parentNode.parentNode.scrollIntoView({ behavior: 'smooth', block: 'center' })
+            return
+        p[i++].scrollIntoView({ behavior: 'smooth', block: 'center' })
     })
 })
+
+document.querySelector('#home').scrollIntoView()
