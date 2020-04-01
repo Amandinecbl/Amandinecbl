@@ -1,6 +1,6 @@
 const questions = [
     {
-        numeroQuestion : 'Commençons par le commencement …',
+        numeroQuestion : 'Commençons par le commencement',
         intro : 'Un peu d\'histoire tout d\'abord …',
         title : 'Où fût fondée cette liste ?',
         typeRep : 'lieu',
@@ -13,20 +13,20 @@ const questions = [
         typeRep : 'nom',
         reponses : ['Adrien Arestan','OLivier Fontelle','Matthieu Mary','Raphaël']
     },
-    {
-        numeroQuestion : 'Question 3',
-        intro : 'Les soirées, vous savez qu\'on connaît bien.',
-        title : 'Mais d\'après toi, qui est la plus petite caisse ?',
-        typeRep : 'nom',
-        reponses : ['Maëlle Corné','Lucas Memehtoglu','Pauline Gasse','Oh encore Lucas']
-    },
-    {
-        numeroQuestion : 'Question 3',
-        intro : 'Malheureusement, les lendemains de soirée ne réussissent pas à tout le monde, surout quand on a autre chose que projet le vendredi.',
-        title : 'Les vendredis matin, notre taux d\'alcoolémie moyen est de :',
-        typeRep : 'taux',
-        reponses : ['2g/l','4g/l','Les gars vous dormez …','Mais vous buvez pas vous bande de mytho']
-    },
+    // {
+    //     numeroQuestion : 'Question 3',
+    //     intro : 'Les soirées, vous savez qu\'on connaît bien.',
+    //     title : 'Mais d\'après toi, qui est la plus petite caisse ?',
+    //     typeRep : 'nom',
+    //     reponses : ['Maëlle Corné','Lucas Memehtoglu','Pauline Gasse','Oh encore Lucas']
+    // },
+    // {
+    //     numeroQuestion : 'Question 3',
+    //     intro : 'Malheureusement, les lendemains de soirée ne réussissent pas à tout le monde, surtout quand on a autre chose que projet le vendredi.',
+    //     title : 'Les vendredis matin, notre taux d\'alcoolémie moyen est de :',
+    //     typeRep : 'taux',
+    //     reponses : ['2g/l','4g/l','Les gars vous dormez …','Mais vous buvez pas vous bande de mytho']
+    // },
     // {
     //     numeroQuestion : 'Question 4',
     //     intro : 'L\'année prochaine, la présidence des associations se relève comme chaque année. Comme nous sommes très investis pour notre école, certains d\'entre nous assurerons cette relève.',
@@ -65,10 +65,28 @@ const questions = [
     
 ]
 
+let idHTML = `
+<body>
+<fieldset>
+    <legend> Pour qu'on puisse te reconnaître </legend>
+    <p>Ecris tout d'abord ton nom et ton prénom ainsi que ton adresse epmiste (si tu en as une) pour être éligible au tirage au sort :</p>
+    <form method="POST" action="">
+        <input id='pseudo' type="text" name="pseudo"/>
+    </form>
+    <div><button id="nextForm">Commençons</button></div>
+</fieldset>
+</body>
+`
+
+const pseudo = document.createElement('article')
+pseudo.className ='nextForm'
+pseudo.innerHTML = idHTML
+document.querySelector('main').appendChild(pseudo)
+
 questions.forEach( question => {
     let articleHTML = `
     <fieldset>
-        <legend>${ question.numeroQuestion }</legend>
+        <legend> ${ question.numeroQuestion } </legend>
         <p class="question">${ question.intro }</p>
         <p class="question">${ question.title }<br/>
         <form class="rep" method="post" action="traitement.php">
@@ -76,7 +94,7 @@ questions.forEach( question => {
 
     question.reponses.forEach(response => {
         articleHTML += `
-            <input type="radio" name="${ question.typeRep }" id="${ response }"/>
+            <input type="radio" name="${ question.typeRep }" id="${ response }" required="required"/>
             <label class="touchRep" for="${ response }">${ response }</label><br/>`
     });
 
@@ -97,18 +115,35 @@ questions.forEach( question => {
     document.querySelector('main').appendChild(article)
 })
 
+let endHTML = `
+    <fieldset id="toEnd">
+    <legend> C'est fini! </legend>
+    <p class="centre">Merci d'avoir répondu à ce quiz et rdv
+        <span id="date"><br/> le ... à ..h..</span>
+        <br/> pour les résultats!</p>
+    <img id="seeyou" src="./gif/heardofus.gif" alt="see you soon">
+    </fieldset>
+`
+
+const end = document.createElement('article')
+
+    end.className = 'toEnd'
+    end.innerHTML = endHTML
+
+    document.querySelector('main').appendChild(end)
+
 document.querySelector('#next').addEventListener('click', () => {
+    document.querySelector('.nextForm').scrollIntoView({behavior: 'smooth', block: 'end'})
+})
+
+document.querySelector('#nextForm').addEventListener('click', () => {
     document.querySelectorAll('.bcgPB')[0].scrollIntoView({ behavior: 'smooth', block: 'end' })
 })
 
-
-
 document.querySelectorAll('.bcgPB').forEach ((toNextForm, i, p) => {
     toNextForm.querySelector('.toNextForm').addEventListener('click', () => {
-        console.log(p)
-        console.log(i)
         if (!p[i++])
-            return
+            return toEnd.scrollIntoView({behavior: 'smooth', block: 'end'})
         p[i++].scrollIntoView({ behavior: 'smooth', block: 'center' })
     })
 })
