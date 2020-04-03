@@ -11,7 +11,7 @@ const questions = [
         intro : 'Question pour les fins connaisseurs. Parmi nous se cache une personne ayant l\'âme d\'un papy.',
         title : 'Mais qui est-ce ?',
         typeRep : 'nom',
-        reponses : ['Adrien Arestan','OLivier Fontelle','Matthieu Mary','Raphaël']
+        reponses : ['Adrien Arestan','OLivier Fontelle','Matthieu Mary','Raphaël Maestracci']
     },
     // {
     //     numeroQuestion : 'Question 3',
@@ -69,7 +69,7 @@ let idHTML = `
 <body>
 <fieldset>
     <legend> Pour qu'on puisse te reconnaître </legend>
-    <p>Ecris tout d'abord ton nom et ton prénom ainsi que ton adresse epmiste (si tu en as une) pour être éligible au tirage au sort :</p>
+    <p>Ecris tout d'abord ton nom et ton prénom ainsi que ton adresse mail epmiste (si tu en as une) pour être éligible au tirage au sort :</p>
     <form method="POST" action="">
         <input id='pseudo' type="text" name="pseudo"/>
     </form>
@@ -87,8 +87,8 @@ questions.forEach( question => {
     let articleHTML = `
     <fieldset>
         <legend> ${ question.numeroQuestion } </legend>
-        <p class="question">${ question.intro }</p>
-        <p class="question">${ question.title }<br/>
+        <p>${ question.intro }</p>
+        <p>${ question.title }<br/>
         <form class="rep" method="post" action="traitement.php">
     `
 
@@ -101,7 +101,7 @@ questions.forEach( question => {
     articleHTML += `
         </form>
         <div class="superposition">
-            <img class="gifBack transitionGif" src="./gif/youfoundme.gif" alt="You found me!"/>
+            <img class="gifBack" src="./gif/youfoundme.gif" alt="You found me!"/>
         </div>
         <button class="toNextForm">Question suivante</button>
     </fieldset>
@@ -118,7 +118,7 @@ questions.forEach( question => {
 let endHTML = `
     <fieldset id="toEnd">
     <legend> C'est fini! </legend>
-    <p class="centre">Merci d'avoir répondu à ce quiz et rdv
+    <p>Merci d'avoir répondu à ce quiz et rdv
         <span id="date"><br/> le ... à ..h..</span>
         <br/> pour les résultats!</p>
     <img id="seeyou" src="./gif/heardofus.gif" alt="see you soon">
@@ -127,7 +127,7 @@ let endHTML = `
 
 const end = document.createElement('article')
 
-    end.className = 'toEnd'
+    end.className = 'theEnd'
     end.innerHTML = endHTML
 
     document.querySelector('main').appendChild(end)
@@ -142,9 +142,11 @@ document.querySelector('#nextForm').addEventListener('click', () => {
 
 document.querySelectorAll('.bcgPB').forEach ((toNextForm, i, p) => {
     toNextForm.querySelector('.toNextForm').addEventListener('click', () => {
+        console.log(i++,p)
         if (!p[i++])
-            return toEnd.scrollIntoView({behavior: 'smooth', block: 'end'})
+            return document.querySelector('.theEnd').scrollIntoView({behavior: 'smooth', block: 'end'})
         p[i++].scrollIntoView({ behavior: 'smooth', block: 'center' })
+        
     })
 })
 

@@ -58,21 +58,6 @@ fieldset {
     font-size: 40px;
 }
 
-@media all and (max-width: 554px) {
-    .welcome {
-        text-align: center;
-        font-size: 40px;
-    }
-    
-    .ble {
-        font-size: 50px;
-    }
-    
-    .quiz {
-        font-size: 35px;
-    }
-}
-
 #imageContainer {
     position: relative;
     margin: 60px 0;
@@ -110,14 +95,13 @@ fieldset {
     margin: auto;
     box-sizing: border-box;
     border-radius: 10px;
-    width: 50%;
+    width: 70%;
     font-size: 70%;
 }
 
 #nextForm {
     display: flex;
     margin: 3% auto 0 auto;
-
 }
 
 /* Questions */
@@ -157,8 +141,8 @@ fieldset {
 #seeyou {
     display: flex;
     margin: auto;
-    width: 75%;
-    height: 75%;
+    width: 50%;
+    height: 50%;
 }
 
 #date {
@@ -178,4 +162,34 @@ fieldset {
     opacity: 1;
     width: 20%;
     height: 20%;
+}
+
+@media all and (max-width: 554px) {
+    .welcome {
+        text-align: center;
+        font-size: 40px;
+    }
+    
+    .ble {
+        font-size: 50px;
+    }
+    
+    .quiz, .rep, p {
+        font-size: 35px;
+    }
+
+    legend {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .gifBack {
+        width: 0;
+        left: 0;
+    }
+
+    #pseudo {
+        width: 90%;
+        font-size: 50%;
+    }
 }
