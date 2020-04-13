@@ -1,17 +1,17 @@
 const questions = [
     {
-        numeroQuestion : 'Commençons par le commencement',
-        intro : 'Un peu d\'histoire tout d\'abord …',
-        title : 'Où fût fondée cette liste ?',
-        typeRep : 'lieu',
-        reponses : ['JB 212', 'JB 412', 'JB 633', 'JB933'],
+        numeroQuestion: 'Commençons par le commencement',
+        intro: 'Un peu d\'histoire tout d\'abord …',
+        title: 'Où fût fondée cette liste ?',
+        typeRep: 'lieu',
+        reponses: ['JB 212', 'JB 412', 'JB 633', 'JB933'],
     },
     {
-        numeroQuestion : 'Question 2',
-        intro : 'Question pour les fins connaisseurs. Parmi nous se cache une personne ayant l\'âme d\'un papy.',
-        title : 'Mais qui est-ce ?',
-        typeRep : 'nom',
-        reponses : ['Adrien Arestan','OLivier Fontelle','Matthieu Mary','Raphaël Maestracci']
+        numeroQuestion: 'Question 2',
+        intro: 'Question pour les fins connaisseurs. Parmi nous se cache une personne ayant l\'âme d\'un papy.',
+        title: 'Mais qui est-ce ?',
+        typeRep: 'nom',
+        reponses: ['Adrien Arestan', 'OLivier Fontelle', 'Matthieu Mary', 'Raphaël Maestracci']
     },
     // {
     //     numeroQuestion : 'Question 3',
@@ -62,40 +62,23 @@ const questions = [
     //     typeRep : 'nom',
     //     reponses : ['Plein de soirées de ouf','Des activités comme on n\'en a jamais eu l\'année passée','De supers moments tous ensemble','Les 3 bien sûr !!']
     // },
-    
+
 ]
 
-let idHTML = `
-<body>
-<fieldset>
-    <legend> Pour qu'on puisse te reconnaître </legend>
-    <p>Ecris tout d'abord ton nom et ton prénom ainsi que ton adresse mail epmiste (si tu en as une) pour être éligible au tirage au sort :</p>
-    <form method="POST" action="">
-        <input id='pseudo' type="text" name="pseudo"/>
-    </form>
-    <div><button id="nextForm">Commençons</button></div>
-</fieldset>
-</body>
-`
+questions.forEach((question, i) => {
+    const article = document.createElement('article')
 
-const pseudo = document.createElement('article')
-pseudo.className ='nextForm'
-pseudo.innerHTML = idHTML
-document.querySelector('main').appendChild(pseudo)
-
-questions.forEach( question => {
     let articleHTML = `
     <fieldset>
-        <legend> ${ question.numeroQuestion } </legend>
-        <p>${ question.intro }</p>
-        <p>${ question.title }<br/>
+        <legend> ${question.numeroQuestion} </legend>
+        <p>${question.intro}</p>
+        <p>${question.title}<br/>
         <form class="rep" method="post" action="traitement.php">
     `
-
     question.reponses.forEach(response => {
         articleHTML += `
-            <input type="radio" name="${ question.typeRep }" id="${ response }" required="required"/>
-            <label class="touchRep" for="${ response }">${ response }</label><br/>`
+            <input type="radio" name="${question.typeRep}" id="${response}" required="required"/>
+            <label class="touchRep" for="${response}">${response}</label><br/>`
     });
 
     articleHTML += `
@@ -107,46 +90,36 @@ questions.forEach( question => {
     </fieldset>
     `
 
-    const article = document.createElement('article')
-
     article.className = 'bcgPB'
+    article.id = `article${i}`
     article.innerHTML = articleHTML
 
-    document.querySelector('main').appendChild(article)
+    document.querySelector('#allArticles').appendChild(article)
 })
 
-let endHTML = `
-    <fieldset id="toEnd">
-    <legend> C'est fini! </legend>
-    <p>Merci d'avoir répondu à ce quiz et rdv
-        <span id="date"><br/> le ... à ..h..</span>
-        <br/> pour les résultats!</p>
-    <img id="seeyou" src="./gif/heardofus.gif" alt="see you soon">
-    </fieldset>
-`
+const firstLink = document.querySelector('#firstArticle button')
 
-const end = document.createElement('article')
+firstLink.addEventListener('click', (e) => {
+    const inputValue = document.querySelector('#pseudo').value.trim() // vas voir trim() sur le web
 
-    end.className = 'theEnd'
-    end.innerHTML = endHTML
+    if (!inputValue) { // si il est vide
+        alert('input vide')
+        // afficher le message d'erreur dans #firstArticle
+        return
+    }
 
-    document.querySelector('main').appendChild(end)
+    window.location.assign('#article1')
 
-document.querySelector('#next').addEventListener('click', () => {
-    document.querySelector('.nextForm').scrollIntoView({behavior: 'smooth', block: 'end'})
+    return false
 })
 
-document.querySelector('#nextForm').addEventListener('click', () => {
-    document.querySelectorAll('.bcgPB')[0].scrollIntoView({ behavior: 'smooth', block: 'end' })
-})
-
-document.querySelectorAll('.bcgPB').forEach ((toNextForm, i, p) => {
+document.querySelectorAll('.bcgPB').forEach((toNextForm, i, p) => {
     toNextForm.querySelector('.toNextForm').addEventListener('click', () => {
-        console.log(i++,p)
+        console.log(i++, p)
         if (!p[i++])
             return document.querySelector('.theEnd').scrollIntoView({behavior: 'smooth', block: 'end'})
-        p[i++].scrollIntoView({ behavior: 'smooth', block: 'center' })
-        
+        p[i++].scrollIntoView({behavior: 'smooth', block: 'center'})
+
     })
 })
 

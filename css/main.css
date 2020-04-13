@@ -193,3 +193,7 @@ fieldset {
         font-size: 50%;
     }
 }
+
+#allArticles{
+    display: flex;
+}

@@ -1,30 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="fonts/font.css">
-    <link rel="stylesheet" href="fonts/font.css">
-    <title>BL Quiz</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="fonts/font.css">
+  <link rel="stylesheet" href="fonts/font.css">
+  <title>BL Quiz</title>
 </head>
 
 <body>
-    <main class="bcgMain">
-        <div id="home">
-            <h1 class="welcome">
-                Welcome to the<br/>
-                <span class="ble">BlackLight Experience:</span><br/>
-                <span class="quiz">Le Quiz</span>
-            </h1>
-            <div id="imageContainer">
-                <img id="pic1" src="Logo/LogoBL.png" alt="Logo BL"/>
-                <img id="pic2" src="Logo/LogoBLneg.png" alt="Logo BL"/>
-            </div>
-
-            <div id="next"><button>Come in ...</button></div>
-        </div>
-    </main>
-    <script src="script/main.js"></script>
+<main class="bcgMain">
+  <div id="home">
+    <h1 class="welcome">
+      Welcome to the<br/>
+      <span class="ble">BlackLight Experience:</span><br/>
+      <span class="quiz">Le Quiz</span>
+    </h1>
+    <div id="imageContainer">
+      <img id="pic1" src="Logo/LogoBL.png" alt="Logo BL"/>
+      <img id="pic2" src="Logo/LogoBLneg.png" alt="Logo BL"/>
+    </div>
+    <div id="next">
+      <a href="#firstArticle">
+        <button>Come in ...</button>
+      </a>
+    </div>
+  </div>
+  <article id="firstArticle">
+    <fieldset>
+      <legend> Pour qu'on puisse te reconnaître</legend>
+      <p>Ecris tout d'abord ton nom et ton prénom ainsi que ton adresse mail epmiste (si tu en as une) pour être
+        éligible au tirage au sort :</p>
+      <form method="POST" action="">
+        <input id='pseudo' type="text" name="pseudo"/>
+      </form>
+      <div>
+        <button id="nextForm">Commençons</button>
+      </div>
+    </fieldset>
+  </article>
+  <div id="allArticles">
+  </div>
+  <article>
+    <fieldset id="toEnd">
+      <legend> C'est fini! </legend>
+      <p>Merci d'avoir répondu à ce quiz et rdv
+        <span id="date"><br/> le ... à ..h..</span>
+        <br/> pour les résultats!</p>
+      <img id="seeyou" src="./gif/heardofus.gif" alt="see you soon">
+    </fieldset>
+  </article>
+</main>
+<script src="script/main.js"></script>
 </body>
 </html>
